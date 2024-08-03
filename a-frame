@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AR.js A-Frame Video Example</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/jeromeetienne/AR.js/1.7.6/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs="sourceType: webcam;">
+
+      <!-- Define the marker -->
+      <a-marker type="pattern" url="path/to/your/marker.patt">
+        <!-- Define the video plane -->
+        <a-video src="#video" width="1.5" height="1" position="0 0.5 0"></a-video>
+      </a-marker>
+
+      <!-- Add a camera -->
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <!-- Define the video element -->
+    <video id="video" src="path/to/your/video.mp4" loop="true" crossorigin="anonymous" style="display:none;"></video>
+
+    <script>
+      // Autoplay the video when the page loads
+      document.addEventListener("DOMContentLoaded", function() {
+        var video = document.querySelector("#video");
+        video.play();
+      });
+    </script>
+  </body>
+</html>
